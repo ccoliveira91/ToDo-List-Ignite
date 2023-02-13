@@ -35,6 +35,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+button {
+    all: unset;
+}
+
 body,
 input,
 textarea,

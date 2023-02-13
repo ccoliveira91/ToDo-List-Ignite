@@ -1,16 +1,21 @@
 .taskList {
     background: var(--gray-500);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 16px;
     border-radius: 8px;
     padding: 1rem;
     gap: 0.75rem;
-
 }
 
-.checkTask {
+.taskList p.unCheckedTask {
+    width: 100%;
+    color: var(--gray-100);
+}
+
+.taskList .unCheckedTask {
     width: 24px;
     height: 24px;
     background: transparent;
@@ -18,15 +23,23 @@
     border: 0;
 }
 
-.checkTask svg {
+.taskList .unCheckedTask svg {
     fill: none;
 }
 
-.checkTask svg circle:last-of-type {
+.taskList .unCheckedTask svg circle:last-of-type {
     stroke: var(--blue);
 }
 
-.checkedTask {
+.taskList .unCheckedTask svg polyline:first-of-type {
+    stroke: none;
+}
+
+.taskList .unCheckedTask:hover svg circle:last-of-type {
+    stroke: var(--blue-dark);
+}
+
+.taskList .checkedTask {
     width: 24px;
     height: 24px;
     border-radius: 999px;
@@ -34,36 +47,38 @@
     background: transparent;
 }
 
-.checkedTask svg {
+.taskList .checkedTask svg {
     fill: var(--purple);
 }
 
-.checkedTask svg circle:first-of-type {
+.taskList .checkedTask svg circle:first-of-type {
     opacity: 1;
 }
 
-.checkedTask svg polyline:first-of-type {
+.taskList .checkedTask svg polyline:first-of-type {
     stroke: var(--gray-100);
 }
 
-.checkedTask svg circle:last-of-type {
+.taskList .checkedTask svg circle:last-of-type {
     stroke: var(--purple);
 }
 
-.taskList p {
-    font-size: 0.875rem;
-    color: var(--gray-100);
-    line-height: 1.18rem;
-    margin-right: auto;
-    word-break: break-all;
+.taskList .checkedTask:hover svg circle:first-of-type {
+    stroke: var(--purple-dark);
+    fill: var(--purple-dark);
 }
 
-p.taskCompleted {
+.taskList .checkedTask:hover svg circle {
+    stroke: var(--purple-dark);
+}
+
+.taskList p.checkedTask {
+    width: 100%;
     color: var(--gray-300);
     text-decoration: line-through;
 }
 
-.deleteTask {
+.taskList .deleteTask {
     width: 24px;
     height: 24px;
     background: transparent;
@@ -72,6 +87,6 @@ p.taskCompleted {
     transition-duration: 0.4s;
 }
 
-.deleteTask:hover {
+.taskList .deleteTask:hover {
     color: var(--danger);
 }

@@ -34,6 +34,14 @@ export function Task() {
         setInputTask(event.target.value)
     }
 
+    function handleIsDoneTask(id: string) {
+        tasks.map(task=>{
+            if (task.id === id){
+                task.isDone = !task.isDone;
+            }
+        })
+    }
+
     return (
         <main className={styles.wrapper}>
 
@@ -69,6 +77,7 @@ export function Task() {
                         id={task.id}
                         content={task.content}
                         isDone={task.isDone}
+                        onDoneTask={handleIsDoneTask}
                     />
                 })}
 
