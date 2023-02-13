@@ -119,9 +119,49 @@
 
 }
 
-.taskItens {
+.taskItems {
     flex: 1;
     justify-content: center;
     align-items: center;
 
+}
+
+.checkTask {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    color: var(--blue);
+    border: 0;
+}
+
+.checkTask svg {
+    fill: none;
+}
+
+.checkTask svg circle:last-of-type {
+    stroke: var(--blue);
+}
+
+.checkedTask {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+}
+
+.checkedTask svg {
+    fill: var(--purple);
+}
+
+.checkedTask svg circle:first-of-type {
+    opacity: 1;
+}
+
+.checkedTask svg polyline:first-of-type {
+    stroke: var(--gray-100);
+}
+
+.checkedTask svg circle:last-of-type {
+    stroke: var(--purple);
 }

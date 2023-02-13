@@ -1,19 +1,37 @@
 import styles from './Task.module.css'
 import { CheckCircle, Circle, PlusCircle, Trash } from "phosphor-react";
-import { TaskItens } from './TaskItens';
-import { useState } from 'react';
+import { TaskItems } from './TaskItems';
+import { ChangeEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
+export type TaskType = {
+    id: string,
+    content: string,
+    isDone: boolean
+}
 
 export function Task() {
-    const [tasks, setTask] = useState([
-        1,
-    ])
+    const [inputTask, setInputTask] = useState('')
+    const [tasks, setTask] = useState<TaskType[]>([])
+    const taskQuantity = tasks.length
 
-    function handleCreateNewTask() {
+    function handleCreateNewTask(event: any) {
         event?.preventDefault()
-        setTask([
-            ...tasks, tasks.length +1
-        ])
 
+        const newTask: TaskType = {
+            id: uuidv4(),
+            content: inputTask,
+            isDone: false
+        }
+
+        setTask([
+            ...tasks, newTask
+        ])
+        setInputTask('')
+    }
+
+    function onChangeInputTask(event: ChangeEvent<HTMLInputElement>) {
+        setInputTask(event.target.value)
     }
 
     return (
@@ -23,6 +41,8 @@ export function Task() {
                 <form onSubmit={handleCreateNewTask} className={styles.formTask}>
                     <input
                         type="text"
+                        value={inputTask}
+                        onChange={onChangeInputTask}
                         placeholder="Adicione uma nova tarefa"
                     />
                     <button
@@ -33,7 +53,7 @@ export function Task() {
                 <header className={styles.header}>
                     <div className={styles.tasksCreated}>
                         <strong>Tarefas criadas</strong>
-                        <span>3</span>
+                        <span>{taskQuantity}</span>
                     </div>
                     <div className={styles.tasksCompleted}>
                         <strong>Concluídas</strong>
@@ -42,11 +62,15 @@ export function Task() {
                 </header>
             </div>
 
-            <section className={styles.taskItens}>
-                {tasks.map(tasksitens => {
-                    return <TaskItens />
+            <section className={styles.taskItems}>
+                {tasks.map(task => {
+                    return <TaskItems
+                        key={task.id}
+                        id={task.id}
+                        content={task.content}
+                        isDone={task.isDone}
+                    />
                 })}
-
 
             </section>
 

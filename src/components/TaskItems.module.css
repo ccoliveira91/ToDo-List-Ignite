@@ -1,4 +1,4 @@
-.taskList li {
+.taskList {
     background: var(--gray-500);
     display: flex;
     justify-content: space-between;
@@ -55,6 +55,7 @@
     color: var(--gray-100);
     line-height: 1.18rem;
     margin-right: auto;
+    word-break: break-all;
 }
 
 p.taskCompleted {
@@ -68,5 +69,9 @@ p.taskCompleted {
     background: transparent;
     color: var(--gray-300);
     border: 0;
+    transition-duration: 0.4s;
+}
 
+.deleteTask:hover {
+    color: var(--danger);
 }
