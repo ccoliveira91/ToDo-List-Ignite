@@ -97,8 +97,8 @@ export function Task() {
                         </header>
                     </section>
                 )
-
             }
+            
             <section className={styles.taskItems}>
                 {tasks.map(task => {
                     return <TaskItems

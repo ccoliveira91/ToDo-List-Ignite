@@ -81,10 +81,14 @@
 .taskList .deleteTask {
     width: 24px;
     height: 24px;
+    display: flex;
     background: transparent;
     color: var(--gray-300);
     border: 0;
     transition-duration: 0.4s;
+    align-items: flex-start;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .taskList .deleteTask:hover {
