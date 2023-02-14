@@ -7,7 +7,6 @@
     align-items: center;
 
     gap: 1rem;
-
 }
 
 @media (max-width: 768px) {
@@ -24,7 +23,6 @@
     align-items: center;
 
     gap: 4rem;
-
 }
 
 .formTask {
@@ -33,7 +31,6 @@
     justify-content: center;
 
     gap: 0.5rem;
-
 }
 
 .formTask input {
@@ -46,7 +43,6 @@
     padding: 1rem;
     border-radius: 8px;
     line-height: 1.4;
-
 }
 
 .formTask button {
@@ -70,7 +66,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .tasksCreated {
@@ -83,7 +78,6 @@
 .tasksCreated strong {
     color: var(--blue);
     font-size: 0.875rem;
-
 }
 
 .tasksCreated span {
@@ -93,7 +87,6 @@
     border-radius: 8px;
     font-size: 0.75rem;
     font-weight: bold;
-
 }
 
 .tasksCompleted {
@@ -106,7 +99,6 @@
 .tasksCompleted strong {
     color: var(--purple);
     font-size: 0.875rem;
-
 }
 
 .tasksCompleted span {
@@ -116,14 +108,12 @@
     border-radius: 8px;
     font-size: 0.75rem;
     font-weight: bold;
-
 }
 
 .taskItems {
     flex: 1;
     justify-content: center;
     align-items: center;
-
 }
 
 .checkTask {
@@ -164,4 +154,24 @@
 
 .checkedTask svg circle:last-of-type {
     stroke: var(--purple);
+}
+
+.taskEmpty {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--gray-300);
+    border-radius: 0.5rem;
+    border-top: 1px solid var(--gray-400);
+}
+
+.taskEmpty header {
+    margin-top: 4rem;
+}
+
+.taskEmpty p {
+    font-weight: 700;
 }

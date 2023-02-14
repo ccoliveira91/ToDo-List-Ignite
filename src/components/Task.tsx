@@ -35,12 +35,29 @@ export function Task() {
     }
 
     function handleIsDoneTask(id: string) {
-        tasks.map(task=>{
-            if (task.id === id){
-                task.isDone = !task.isDone;
+        const newTasks = tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    isDone: !task.isDone,
+                };
             }
-        })
+            return task;
+        });
+        setTask(newTasks);
     }
+
+    function handleDeleteTask(id: string) {
+        const newTasks = tasks.filter(task => task.id !== id);
+        setTask(newTasks);
+    }
+
+    function numberOfDoneTask(): number {
+        const count = tasks.filter(task => task.isDone === true).length;
+        return count;
+    }
+
+    const isEmptyTasks = taskQuantity === 0;
 
     return (
         <main className={styles.wrapper}>
@@ -65,11 +82,23 @@ export function Task() {
                     </div>
                     <div className={styles.tasksCompleted}>
                         <strong>Concluídas</strong>
-                        <span>1 de 3</span>
+                        {isEmptyTasks ? (<span>{numberOfDoneTask()}</span>) : (<span>{numberOfDoneTask()} de {taskQuantity}</span>)}
                     </div>
                 </header>
             </div>
 
+            {
+                tasks.length <= 0 && (
+                    <section className={styles.taskEmpty}>
+                        <header>
+                            {/* <Clipboard size={50} /> */}
+                            <p>Você ainda não tem tarefas cadastradas</p>
+                            <span>Crie tarefas e organize seus itens a fazer</span>
+                        </header>
+                    </section>
+                )
+
+            }
             <section className={styles.taskItems}>
                 {tasks.map(task => {
                     return <TaskItems
@@ -78,6 +107,7 @@ export function Task() {
                         content={task.content}
                         isDone={task.isDone}
                         onDoneTask={handleIsDoneTask}
+                        onDeleteTask={handleDeleteTask}
                     />
                 })}
 

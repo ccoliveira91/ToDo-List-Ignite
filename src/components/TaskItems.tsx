@@ -6,26 +6,36 @@ interface TaskItensProps {
     content: string,
     isDone: boolean
     onDoneTask: (id: string) => void;
+    onDeleteTask: (id: string) => void;
 }
 
-export function TaskItems({ id, content, isDone, onDoneTask }: TaskItensProps) {
+export function TaskItems({ id, content, isDone, onDoneTask, onDeleteTask }: TaskItensProps) {
 
     const taskIsDone = isDone ? styles.checkedTask : styles.unCheckedTask;
 
-    function handleIsDoneTask(){
+    function handleIsDoneTask() {
         onDoneTask(id);
+    }
+
+    function handleDeletTask() {
+        onDeleteTask(id);
     }
 
     return (
         <div className={styles.taskList}>
-            <button className={taskIsDone} onClick={handleIsDoneTask}> 
+            <button
+                className={taskIsDone}
+                onClick={handleIsDoneTask}
+            >
                 <CheckCircle size={24} weight="duotone" />
             </button>
 
             <p className={taskIsDone}>{content}</p>
 
             <button
-                className={styles.deleteTask}>
+                className={styles.deleteTask}
+                onClick={handleDeletTask}
+            >
                 <Trash size={14} weight="duotone" />
             </button>
         </div>
